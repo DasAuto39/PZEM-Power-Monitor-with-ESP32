@@ -6,7 +6,7 @@ This project is a real-time smart power monitoring system designed to classify e
 
 The system implements an Intelligent Deep Sleep mechanism to conserve energy, waking up fully only when significant load changes are detected. It utilizes a Random Forest Machine Learning model to classify connected devices (e.g., Laptop, Solder, Printer) with 99.8% accuracy based on power profiles.
 
-**System Architecture
+## System Architecture
 
 The system follows a distributed IoT architecture:
 
@@ -20,16 +20,10 @@ Backend (Flask): Python-based API running the Random Forest inference engine.
 
 Storage & Visuals: Prometheus (Time-Series DB) stores metrics, visualized on Grafana.
 
-graph LR
-    PZEM[PZEM-004T] -->|UART| ESP32
-    ESP32 -->|MQTT| Broker[HiveMQ]
-    Broker -->|Sub| NodeRED
-    NodeRED <-->|HTTP| Flask[ML Model]
-    NodeRED -->|Expose| Prometheus
-    Prometheus -->|Query| Grafana
+![System Flowchart](images/flowchartrtos.png)
 
 
-**Hardware Components
+## Hardware Components
 
 Microcontroller: ESP32 Development Board (Dual Core).
 
@@ -39,7 +33,7 @@ Actuator: 1-Channel Relay Module (Active Low) for overload protection.
 
 Power Supply: 5V DC for ESP32 and Sensor logic.
 
-** Software Components
+## Software Components
 
 Firmware: ESP-IDF (C Language) with FreeRTOS.
 
@@ -51,7 +45,7 @@ Database: Prometheus (Time-Series).
 
 Visualization: Grafana.
 
-*** Key Features
+### Key Features
 
 1. RTOS Implementation
 
@@ -91,7 +85,7 @@ Implements Bearer Token authentication for JSON and Basic Auth workaround for bi
 
 
 
-** Dataset
+## Dataset
 
 The model was trained on 2,452 samples of real-world electrical data.
 
